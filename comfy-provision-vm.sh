@@ -1,0 +1,13 @@
+gcloud compute instances create comfy-gpu-box \
+    --zone=northamerica-northeast2-b \
+    --machine-type=g2-standard-24 \
+    --accelerator=count=2,type=nvidia-l4 \
+    --image-project=deeplearning-platform-release \
+    --image-family=common-cu128-ubuntu-2204-nvidia-570 \
+    --boot-disk-size=100GB \
+    --boot-disk-type=pd-balanced \
+    --maintenance-policy=TERMINATE \
+	--disk=name=comfy-models-disk,mode=rw,boot=no,device-name=comfy-models-disk \
+	--metadata-from-file=startup-script=comfy-startup.sh \
+    --metadata="install-nvidia-driver=True,proxy-mode=project_editors" \
+    --scopes=https://www.googleapis.com/auth/cloud-platform

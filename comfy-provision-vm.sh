@@ -1,5 +1,5 @@
 gcloud compute instances create comfy-gpu-box \
-    --zone=northamerica-northeast2-b \
+    --zone=us-east4-a \
     --machine-type=g2-standard-24 \
     --accelerator=count=2,type=nvidia-l4 \
     --image-project=deeplearning-platform-release \

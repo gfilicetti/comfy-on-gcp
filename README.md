@@ -51,3 +51,10 @@ gcloud compute ssh comfy-gpu-box --zone=us-east4-a -- -L 8188:localhost:8188 -N
 ```
 
 Now point your browser to: <http://localhost:8188>
+
+### Looking for output from the VM's startup script
+Use this command to print out logs from the VM's serial port and search only for output from the startup script:
+
+```bash
+gcloud compute --project=gf-comfy-testing instances get-serial-port-output comfy-gpu-box --zone=us-east4-a --port=1  | grep "comfy-gpu-box" | grep "startup-script:"
+```
